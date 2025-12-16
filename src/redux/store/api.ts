@@ -17,10 +17,12 @@ export interface SignUpResponse {
   };
 }
 
+const apiurl = process.env.API_URL;
+
 export const RTKapi = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:4000",
+    baseUrl: `${apiurl}/api`,
   }),
   endpoints: (builder) => ({
     getUsers: builder.query<IDataUsers, void>({
@@ -60,13 +62,15 @@ export const RTKapi = createApi({
       }),
     }),
 
-    updateuserstatus: builder.mutation<{}, { newrole: string; userId: string }>({
-      query: ({newrole, userId}) => ({
-        url: `/users/${userId}`,
-        method: "PUT",
-        body: {newrole}
-      }),
-    }),
+    updateuserstatus: builder.mutation<{}, { newrole: string; userId: string }>(
+      {
+        query: ({ newrole, userId }) => ({
+          url: `/users/${userId}`,
+          method: "PUT",
+          body: { newrole },
+        }),
+      }
+    ),
   }),
 });
 
