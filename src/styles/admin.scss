@@ -1,0 +1,263 @@
+@use "variables.scss" as *;
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: $fontcasual;
+    background-color: $body-color;
+}
+
+.mainadmincontainer{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    background-color: $body-color;
+}
+
+.userscontainer{
+    display: flex;
+    flex-direction: column;
+    background-color: $casual-white;
+    width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.headercontainer{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    border-bottom: 1px solid $border-gray;
+}
+
+.searchuserscontainer{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $border-gray;
+    padding-bottom: 20px;
+}
+
+.headerdiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.contentheader{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    width: 65%;
+}
+
+.searchinput{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid $border-gray;
+    background: url('../assets/searchicon.png')no-repeat;
+    background-size: 20px 20px;
+    background-position: left 10px center; 
+    padding-left: 40px;
+    width: 250px;
+    height: 30px;
+} 
+
+.headertext{
+    padding: 10px 20px;
+    border-left: 1px solid $border-gray;
+}
+
+.userslist{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.avatar{
+    border-radius: 100%;
+}
+
+.avatarcontainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 200px;
+}
+
+.avatarcontainer a{
+    color: $casual-black;
+}
+
+
+.usersdiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+
+.userinfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.buttoncontainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.rolebutton.checked{
+    background-color: $button-blue;
+    color: $casual-white;
+    padding: 15px 20px;
+    cursor: pointer;
+    border: 1px solid $casual-gray;
+    transition: all 0.4s ease;
+}
+
+.rolebutton{
+    background-color: $casual-white;
+    color: $casual-black;
+    padding: 15px 20px;
+    cursor: pointer;
+    border: 1px solid $casual-gray;
+}
+
+@media (max-width: 1024px) {
+  .userscontainer {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .contentheader {
+    width: 100%;
+    gap: 15px;
+  }
+
+  .searchinput {
+    width: 200px;
+  }
+
+  .avatarcontainer {
+    width: auto;
+  }
+
+  .buttoncontainer {
+    gap: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainadmincontainer {
+    margin-top: 10px;
+  }
+
+  .userscontainer {
+    width: 100%;
+    border-radius: 0;
+    padding: 10px;
+  }
+
+  .headerdiv {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .contentheader {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .headertext {
+    border-left: none;
+    padding: 5px 0;
+  }
+
+  .searchinput {
+    width: 100%;
+  }
+
+  .userinfo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  
+  .avatarcontainer {
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .buttoncontainer {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .buttoncontainer::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .buttoncontainer::-webkit-scrollbar-thumb {
+    background: $border-gray;
+    border-radius: 10px;
+  }
+
+  .rolebutton {
+    white-space: nowrap;
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  .avatar{
+    width: fit-content;
+  }
+}
+
+@media (max-width: 480px) {
+.avatar{
+    width: fit-content;
+  }
+  .avatarcontainer img {
+    width: 50px;
+  }
+
+  .userscontainer {
+    padding: 8px;
+  }
+
+  .userinfo {
+    padding: 15px 5px;
+  }
+
+  .rolebutton {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}

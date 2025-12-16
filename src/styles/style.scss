@@ -1,0 +1,495 @@
+@use './variables.scss' as *;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: $fontcasual;
+    padding: 0;
+    background: $body-color;
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+
+.maincontainer{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+    background: $body-color;
+}
+
+.searchcontainer{
+    margin: 20px;
+    height: fit-content;
+    width: 40%;
+    padding: 20px;
+}
+
+.searchformcontainer{
+    background-color: $casual-white;
+    padding: 20px;
+    border-radius: 5px;
+    display: grid;
+    column-count: 2;
+    gap: 10px;
+}
+
+.basicinput{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid $casual-gray;
+    background: url('../assets/searchicon.png')no-repeat;
+    background-size: 20px 20px;
+    padding-left: 40px;
+    background-position: left 10px center; 
+}   
+ 
+.basicinput :focus{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid $casual-black;
+    outline: none;
+} 
+
+.searchbutton{
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    color: $casual-white;
+    background-color: $button-blue;
+    transition: all 0.1s ease-in;   
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.searchbutton:hover{
+    background-color: $dark-blue;
+}
+
+.searchbutton.red{
+    background-color: $button-red;
+}
+
+.searchbutton.red:hover{
+    background-color: $button-hover-red;
+}
+
+.employeescontainer{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    width: 60%;
+    height: auto;
+}
+
+.employeewrapper.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.employeewrapper.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.employeecontainer{
+    background-color: $casual-white;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.employeecontainer.list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+
+}
+
+.employeecontainer.grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 370px;
+    height: auto;
+}
+
+.subinfocontainerchild.list {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.subinfocontainerchild.grid {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.profilecontainer.list {
+    flex-direction: row;
+    align-items: center;
+}
+
+.profilecontainer.grid {
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchtypecontainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+}   
+
+.employeewrapper{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;  
+    transition: all 0.3s ease-in-out;
+}
+
+.employeecontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 370px;
+    height: 400px;
+    background-color: $casual-white;
+    border-radius: 4px;
+}
+
+.divider {
+    width: 80%;      
+    border: 0;        
+    border-bottom: 1px solid $body-color;  
+    margin: 0 10px;   
+}
+
+.subinfocontainerchild{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}   
+
+.subinfocontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+}
+
+#subinfo{
+    margin-inline: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+.buttontype1, .buttontype2 {
+    padding: 0px;
+    cursor: pointer;
+    border-bottom: 4px solid transparent;
+    background-color: transparent;
+    height: 100%;
+    width: 50%;
+    cursor: pointer;
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+    color: $casual-gray;
+    transition: all 0.1s ease-in;
+}
+
+.buttontype1.checked, .buttontype2.checked {
+    border-bottom: 4px solid $border-blue;
+    color: $casual-black;
+}
+.advancedinput{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid $casual-gray;
+} 
+ 
+.advancedinput :focus{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid $casual-black;
+    outline: none;
+} 
+
+.inputcontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 5px;
+}
+
+.rowcontainer{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+.employeecontainerheader{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+#gridbutton{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.mobilesearchcontainer{
+    display: none;
+
+}
+
+.htmlto{
+    text-decoration: none;
+}
+
+.profilecontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    gap: 5px;
+    color: $casual-black;
+} 
+
+.ionnerprofileinfo{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.signout{
+    color: red;
+}
+.profileimage {
+    position: relative;  
+    width: 200px;
+}
+
+.profileimage .avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border-radius: 50%;
+    object-fit: cover; 
+    display: block;
+}
+
+.profileimage .remote {
+    position: absolute; 
+    bottom: 5px;          
+    left: 0px;         
+    width: 50px;
+    height: 50px;
+    cursor: pointer;    
+}
+
+ @media (max-width: 1200px) {
+       .maincontainer {
+        flex-direction: column;
+        height: auto; 
+        min-height: 100vh; 
+        align-items: center;  
+        justify-content: flex-start;
+    }
+ 
+    .searchcontainer {
+        width: 90%; 
+    }
+    
+    .employeescontainer {
+        width: 90%; 
+    }
+
+    .employeewrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    .searchcontainer {
+        width: 40%;
+        margin: 15px;
+    }
+
+    .employeescontainer {
+        width: 55%;
+        margin: 15px;
+    } 
+    .employeecontainer {
+        width: 100%;
+        height: auto;
+    }
+
+    .maincontainer {
+        justify-content: space-between;
+    }
+    
+    .employeewrapper {
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px;
+    }
+}
+
+ @media (max-width: 1200px) {
+       .maincontainer {
+        flex-direction: column;
+        height: auto; 
+        min-height: 100vh; 
+        align-items: center;  
+        justify-content: flex-start;
+    }
+ 
+    .searchcontainer {
+        width: 90%; 
+    }
+    
+    .employeescontainer {
+        width: 90%; 
+    }
+
+    .employeewrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+@media (max-width: 768px) {
+    .profilecontainer{
+        flex-direction: row;
+    }
+    #gridbutton{
+        display: none;
+    }
+
+    .avatar{
+        width: 90px;
+        height: 90px;
+    }
+ 
+    .searchcontainer {
+        width: 90%;  
+        margin: 20px 5%;
+        padding: 15px;
+    }
+
+    .searchformcontainer {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .employeescontainer {
+        width: 90%;  
+        margin: 0 5% 20px 5%;  
+    }
+
+    .employeewrapper {
+        display: flex;
+        flex-direction: column;  
+        align-items: center; 
+        justify-content: center;
+        gap: 15px; 
+    }
+
+    .employeewrapper.grid {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 100%;
+    }
+
+    .employeecontainer.grid{
+        max-width: 100%;
+    }
+    .employeecontainer.list {
+        flex-direction: column;
+    }
+    
+    .employeecontainer {
+        padding: 20px;
+    }
+
+    .checkboxImage{
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobilesearchcontainer{
+        width: 100%;
+        background-color: $dark-blue;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+ 
+
+    #logo{
+        font-size: small;
+        display: grid; 
+        column-count: 2; 
+        margin: 0; 
+        letter-spacing: 2px; 
+        text-align: left;
+    }
+
+    .employeecontainer {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .subinfocontainerchild {
+        flex-direction: row;
+        align-items: center;
+        padding: 5px 10px;
+    }
+    
+    .searchformcontainer .rowcontainer {
+        grid-template-columns: 1fr;  
+    }
+}
+

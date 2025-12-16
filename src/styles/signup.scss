@@ -1,0 +1,88 @@
+@use "./variables.scss" as *;
+
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: $fontcasual;
+    padding: 0;
+    background:  $body-color;
+}
+
+
+.mainsignupcontainer{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:  $body-color;
+}
+
+.signupinputcontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    background-color:  $header-blue;
+    padding: 40px 20px;
+    height: auto;
+    min-width: 450px;
+    border-radius: 20px;
+}
+
+.optionbox{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.signupinput{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid $casual-gray;
+    width: 70%;
+    margin-bottom: 10px;
+} 
+ 
+.signupinput :focus{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid  $casual-black;
+    outline: none;
+} 
+
+.submitbutton{
+    padding: 10px;
+    border-radius: 5px;
+    width: 70%;
+    border: none;
+    font-size: large;
+    color:  $casual-white;
+    background-color:  $button-blue;
+    transition: all 0.1s ease-in;   
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.inputbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    color:  $casual-white;
+}
+
+.inputbox label{
+    width: 70%;
+}   

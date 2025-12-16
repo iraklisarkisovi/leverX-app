@@ -1,0 +1,364 @@
+@use "./variables.scss" as *;
+
+
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+p{
+    color: $casual-litgray;
+}
+
+p, h3{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: $fontcasual;
+    padding: 0;
+    background: $body-color;
+}
+
+.mainheader{
+    width: 100%;
+    height: 90px;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    position: sticky;
+    flex-direction: row;
+    align-items: center;
+    font-size: smaller;
+    justify-content: space-around;
+    background-color: $header-blue;
+    color: $casual-white;
+}  
+
+.mainheader :last-child{
+    padding: 0;
+    margin: 0;
+}
+
+.mobileprofile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    padding: 10px;
+    color: $casual-black;
+}
+
+.addressbook{
+    width: fit-content;
+    text-align: center;
+    color: $casual-black;
+}
+
+.profilecontainerdiv{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-around; 
+    align-items: center; 
+    width: 100%;
+}
+
+.categorycontainer{
+    height: 100%;
+    width: fit-content;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    border-bottom: $border-white;
+}
+
+
+.categorycontainer a {
+    display: inline-block;
+    border-bottom: 4px solid transparent;
+    transition: border-bottom-color 0.3s ease;
+    text-align: center;  
+}
+
+.categorycontainer a:hover{
+    border-bottom: 4px solid $border-blue; 
+}
+
+
+a{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: $casual-white;
+}
+
+.headerbutton {
+    margin: 5px;
+    background-color: $dark-blue;
+    padding: 10px 20px; 
+    border-radius: 50px;  
+    width: auto;
+    height: auto;
+    outline: none;
+    border: none;
+    color: $casual-white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    font-family: inherit;  
+    transition: all 0.3s ease; 
+}
+
+.headerbutton:hover{
+    background-color: $button-hover-blue;
+}
+
+.headerbutton.round {
+    border-radius: 50%; 
+    width: 55px;  
+    height: auto;
+    padding: 0;  
+}
+
+.supportbutton{
+    position: fixed;
+    bottom: 60px;
+}
+
+.headerbuttoncontainer{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+}
+
+.employeeheader{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headermobile{
+    width: auto;
+}
+
+#inputheader{
+    width: 50%;
+    height: 70px;
+    border: none;
+    color: $casual-white;
+    pointer-events: none;
+    background: url('../assets/searchiconwhite.png') no-repeat;
+    background-size: 20px 20px;
+    background-position: left 10px center; 
+    padding-left: 40px;
+}
+
+#inputheader::placeholder{
+    color: $casual-white;
+}
+#inputheader:focus{
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.mobilenavcontent {  
+    display: none;  
+    position: absolute;
+    top: 65px;  
+    left: 0;
+    width: 70%;
+    height: 100%;
+    background-color: $burgermenu-bg-color;
+}
+
+.avatar{
+    border-radius: 100%;
+}
+
+.toggleMenu{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.MenuDiv{
+    display: none;
+    margin: 5px;
+}
+
+.mobiledesign{
+    display: contents;
+}
+
+.logouttext{
+    display: none;
+}
+
+.stripe{
+    display: none;
+}
+
+@media (max-width: 1200px) {    
+    .mainheader {
+        justify-content: space-between;
+        padding-inline: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobiledesign {
+        display: flex;
+        position: fixed;
+        top: 13%;
+        left: -100%;
+        width: 60%;
+        height: 100vh;
+        background: $burgermenu-bg-color;
+        flex-direction: column;
+        padding: 20px;
+        transition: left 0.3s ease;
+        z-index: 100;
+    }
+    .stripe{
+        display: block;
+    }
+
+    .logouticon{
+        display: none;
+    }
+
+    .mobiledesign.open {
+        left: 0;
+    }
+
+    .categorycontainer{
+        display: contents;
+    }
+
+    .headerbuttoncontainer{
+        display: contents;
+    }
+
+    #headercheckbox:checked ~ .mainheader .mobilenavcontent {
+        display: flex;
+        position: fixed;
+        flex-direction: column;
+        align-items: center;  
+        justify-content: top;
+    }
+    
+    .MenuDiv{
+        display: block;
+    }
+
+    #profile{
+        background-color: transparent;
+        color: $casual-black;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        font-size: large;
+        font-weight: 700;
+    }
+
+    .logouttext{
+        display: block;
+        color: $red-expired;
+        width: 100%;
+    }
+
+    #logout{
+        background-color: transparent;
+        border-radius: 0;
+        width: 100%;
+    }
+
+    #supportbutton{
+        position: fixed;
+        bottom: 20px;
+        left: 20%;
+    }
+
+    .categorycontainer{
+        color: $casual-black;
+    }
+
+    .headerbutton.open{
+        display: none;
+    }
+
+    .headerbuttoncontainer {
+        position: fixed;
+        left: 0;
+        top: 50px;
+        flex-direction: column
+    }
+    #headercheckbox:checked ~ .mainheader{
+        position: fixed;
+    }
+    #headercheckbox:checked ~ .mainheader .headermobile #menuimage {
+        background: url('../assets/menuclosedicon.png') no-repeat center/cover;
+    }
+       .mobilenavcontent{
+        top: 90px;
+    }
+    #menuimage{
+        display: block;
+    }
+    .categorylink{
+        font-size: large;
+        font-weight: 500;
+        margin: 5px;
+        color: $casual-black;
+    }
+}
+
+
+
+@media (max-width: 480px) {    
+    .mobiledesign {
+        top: 12%;
+    }
+
+    .mainheader {
+        height: auto;
+        padding: 15px 10px;
+        flex-direction: row;  
+        justify-content: space-around;
+        text-align: center;
+    }
+
+    #profile{
+        flex-direction: column;
+    }
+    .logo{
+        font-size: small;
+        display: grid; 
+        column-count: 2;    
+        margin: 0; 
+        letter-spacing: 2px; 
+        text-align: left;
+    }
+  
+    .categorycontainer{
+        // display: none;
+    }
+
+    .mobilenavcontent{
+        top: 65px;
+    }
+    
+}
+
+
