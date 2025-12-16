@@ -1,22 +1,18 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
+const webpack = require("webpack");
 module.exports = {
   mode: "development",
-
   entry: "./src/index.tsx",
-
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
     clean: true,
     publicPath: "/",
   },
-
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
   },
-
   module: {
     rules: [
       {
@@ -25,27 +21,29 @@ module.exports = {
         use: "babel-loader",
       },
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)$/i,
-        type: "asset/resource",
-      },
-      {
         test: /\.s[ac]ss$/i,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/i,
+        type: "asset/resource",
+      },
     ],
   },
-
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env),  
+    }),
   ],
-
   devServer: {
+    static: path.join(__dirname, "public"),
     port: 3000,
     open: true,
     hot: true,

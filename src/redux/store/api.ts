@@ -17,7 +17,7 @@ export interface SignUpResponse {
   };
 }
 
-const apiurl = process.env.API_URL;
+const apiurl = "https://leverx-server.onrender.com";
 
 export const RTKapi = createApi({
   reducerPath: "api",
