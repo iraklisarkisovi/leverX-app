@@ -8,6 +8,7 @@ import IndexProtection from './protectedroute/indexprotection';
 import AdminProtection from './protectedroute/adminprotection';
 import { Provider } from 'react-redux';
 import { MainStore } from './redux/store/store';
+import Notfoundpage from './pages/notfoundpage';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
               </IndexProtection>
             }
           />
+          <Route element={<Notfoundpage />} path="/pagenotfound" />
         </Routes>
       </BrowserRouter>
     </Provider>

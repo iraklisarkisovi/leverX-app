@@ -5,6 +5,7 @@ import { IDataUsers, IUser } from "../types/types";
 import avatarplaceholder from "../assets/users/userpicture.png";
 import { Link } from "react-router-dom";
 import { useGetUsersQuery, useUpdateuserstatusMutation } from "../redux/store/api";
+import Progress from "../UI components/circularprogress";
 
 const adressbook = ["Employee", "HR"];
 const vacation = ["Employee", "PO", "DD"];
@@ -12,7 +13,7 @@ const vacation = ["Employee", "PO", "DD"];
 const Admin = () => {
   const [users, setUsers] = useState<IDataUsers>([])
   const [searchusers, setSearchusers] = useState<IDataUsers>([]);
-  const { data } = useGetUsersQuery();
+  const { data, isLoading } = useGetUsersQuery();
   const [UpdateStatus] = useUpdateuserstatusMutation();
 
   const currentuserid = localStorage.getItem("userId") || sessionStorage.getItem("userId")
@@ -51,8 +52,8 @@ const Admin = () => {
 
   return (
     <>
-      <Header />
-      <div className="mainadmincontainer">
+      {isLoading ? <Progress/> :
+      <><Header /><div className="mainadmincontainer">
         <div className="userscontainer">
           <div className="headercontainer">
             <h3>ROLES & PERMISSIONS</h3>
@@ -65,8 +66,7 @@ const Admin = () => {
                   type="text"
                   placeholder="John Smith"
                   className="searchinput"
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => HandleSearch(e.target.value)}
-                />
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => HandleSearch(e.target.value)} />
                 <h4 className="headertext">Address book role</h4>
                 <h4 className="headertext">Vacation role</h4>
               </div>
@@ -80,8 +80,7 @@ const Admin = () => {
                       src={user.user_avatar || avatarplaceholder}
                       alt="usersavatar"
                       width="100px"
-                      className="avatar"
-                    />
+                      className="avatar" />
                     <Link to={`/user/${user._id}`}>
                       {user.first_name} {user.last_name} /{" "}
                       {user.first_native_name} {user.last_native_name}
@@ -91,11 +90,9 @@ const Admin = () => {
                     {adressbook.map((role) => (
                       <button
                         onClick={() => HandleRoleChange(role, user._id)}
-                        className={
-                          role.toLowerCase() === user.role?.toLowerCase()
-                            ? "rolebutton checked"
-                            : "rolebutton"
-                        }
+                        className={role.toLowerCase() === user.role?.toLowerCase()
+                          ? "rolebutton checked"
+                          : "rolebutton"}
                       >
                         {role}
                       </button>
@@ -105,11 +102,9 @@ const Admin = () => {
                     {vacation.map((role) => (
                       <button
                         onClick={() => HandleRoleChange(role, user._id)}
-                        className={
-                          role.toLowerCase() === user.role?.toLowerCase()
-                            ? "rolebutton checked"
-                            : "rolebutton"
-                        }
+                        className={role.toLowerCase() === user.role?.toLowerCase()
+                          ? "rolebutton checked"
+                          : "rolebutton"}
                       >
                         {role}
                       </button>
@@ -118,11 +113,9 @@ const Admin = () => {
                   <div className="buttoncontainer" id="admin">
                     <button
                       onClick={() => HandleRoleChange("admin", user._id)}
-                      className={
-                        user.role === "admin"
-                          ? "rolebutton checked"
-                          : "rolebutton"
-                      }
+                      className={user.role === "admin"
+                        ? "rolebutton checked"
+                        : "rolebutton"}
                     >
                       Admin
                     </button>
@@ -132,8 +125,8 @@ const Admin = () => {
             </div>
           </div>
         </div>
-      </div>
-    </>
+      </div></>
+}    </>
   );
 }
 

@@ -1,24 +1,24 @@
 import { useState } from "react";
-import "../styles/signup.scss"
-import { Link, useNavigate } from 'react-router-dom';
+import "../styles/signup.scss";
+import { Link, useNavigate } from "react-router-dom";
 import { useSignInMutation } from "../redux/store/api";
-
+import { Alert, LinearProgress } from "@mui/material";
 
 const Signin = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPass] = useState<string>('');
+  const [email, setEmail] = useState<string>("");
+  const [password, setPass] = useState<string>("");
   const [remember, setRemember] = useState<boolean>(false);
-  const [Signin] = useSignInMutation();
+  const [Signin, {isLoading, isError}] = useSignInMutation();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const Login = async () => {
-    try{
+    try {
       const { id, role } = await Signin({
         password,
         email,
       }).unwrap();
-      
+
       if (remember) {
         localStorage.setItem("auth", "true");
         localStorage.setItem("userId", id);
@@ -28,24 +28,32 @@ const Signin = () => {
         sessionStorage.setItem("userId", id);
         sessionStorage.setItem("userRole", role);
       }
-      
+
       navigate("/");
-    }catch (err){
+    } catch (err) {
       console.log(err)
     }
-  }  
+  };
 
   return (
     <>
       <div className="mainsignupcontainer">
         <h1>Sign in form</h1>
-        <div className="signupinputcontainer">
+
+        <form
+          className="signupinputcontainer"
+          onSubmit={(e) => {
+            e.preventDefault(), Login();
+          }}
+        >
           <div className="inputbox">
             <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setEmail(e.target.value)
+              }
               className="signupinput"
               value={email}
             />
@@ -57,7 +65,9 @@ const Signin = () => {
               id="password"
               className="signupinput"
               name="password"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPass(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setPass(e.target.value)
+              }
               value={password}
               required
             />
@@ -69,19 +79,26 @@ const Signin = () => {
                 <input
                   type="checkbox"
                   id="checkbox"
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setRemember(e.target.checked)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setRemember(e.target.checked)
+                  }
                 />
               </div>
               <Link to={"/signup"}>Sign Up</Link>
             </div>
           </div>
-          <button className="submitbutton" onClick={() => Login()}>
-            Sign In
+          <button className="submitbutton" type="submit">
+            {isLoading ? <LinearProgress color="inherit" /> : "Sign In"}
           </button>
-        </div>
+          {isError && (
+            <Alert severity="error">
+              Invalid credentials! please input valid email and password
+            </Alert>
+          )}
+        </form>
       </div>
     </>
   );
-}
+};
 
-export default Signin
+export default Signin;

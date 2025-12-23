@@ -6,6 +6,7 @@ import avatarplaceholder from "../assets/users/userpicture.png";
 import buildingicon from "../assets/departmenticon.png";
 import roomicon from "../assets/roomicon.png";
 import gridicon from "../assets/gridicon.png";
+import menuicon from "../assets/menuicon.png"
 export interface UsercardProps {
   data: IDataUsers;
 }
@@ -30,10 +31,17 @@ const Usercard: React.FC<UsercardProps> = ({data}) => {
           </div>
           <button id="gridbutton" onClick={() => gridlayout()}>
             <img
-              className="gridicon"
+              className={isgrid ? "gridicon checked" : "gridicon"}
               width="30px"
               height="30px"
               src={gridicon}
+              alt="grid/col"
+            />
+            <img
+              className={isgrid ? "gridicon" : "gridigon checked"}
+              width="30px"
+              height="30px"
+              src={menuicon}
               alt="grid/col"
             />
           </button>

@@ -17,10 +17,7 @@ p{
 }
 
 .maincontainer{
-    display: flex;
-    align-items: start;
-    justify-content: start;
-    flex-direction: row;
+    @include flexbox(row, start, start);
     width: 100%;
     height: 100vh;
     background: $body-color;
@@ -91,6 +88,18 @@ p{
     height: auto;
 }
 
+.gridicon {
+  opacity: 0.5;
+  transform: scale(0.8);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.gridicon.checked {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
 .employeewrapper.list {
     display: flex;
     flex-direction: column;
@@ -110,18 +119,14 @@ p{
 }
 
 .employeecontainer.list {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    @include flexbox(row, center,space-between);
     width: 100%;
     height: auto;
 
 }
 
 .employeecontainer.grid {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    @include flexbox(column, center, space-between);
     width: 100%;
     max-width: 370px;
     height: auto;
@@ -150,11 +155,8 @@ p{
 }
 
 .searchtypecontainer{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    @include flexbox(row, center, center);
     height: 30px;
-    justify-content: center;
     background-color: transparent;
     border: none;
     width: 100%;
@@ -168,10 +170,7 @@ p{
 }
 
 .employeecontainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include flexbox(column, center, end);
     width: 370px;
     height: 400px;
     background-color: $casual-white;
@@ -186,11 +185,8 @@ p{
 }
 
 .subinfocontainerchild{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    @include flexbox(row, center, center);
     padding: 10px;
-    justify-content: center;
     width: 100%;
     margin-top: 10px;
 }   
@@ -206,9 +202,7 @@ p{
 #subinfo{
     margin-inline: 10px;
     cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    @include flexbox(row, center, center);
     gap: 10px;
 }
 
@@ -283,10 +277,7 @@ p{
 }
 
 .profilecontainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include flexbox(column, center, center);
     width: auto;
     height: auto;
     gap: 5px;
@@ -396,6 +387,8 @@ p{
         gap: 15px;
     }
 }
+
+
 @media (max-width: 768px) {
     .profilecontainer{
         flex-direction: row;

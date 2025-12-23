@@ -27,3 +27,11 @@ $casual-gray: gray;
 $casual-litgray: lightgray;
 $fontcasual: 'Roboto', sans-serif;
 $border-gray: #d1d1d1;
+
+
+@mixin flexbox($direction, $align, $justify){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}

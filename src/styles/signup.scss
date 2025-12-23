@@ -1,4 +1,4 @@
-@use "./variables.scss" as *;
+@use './variables.scss' as *;
 
 * {
   box-sizing: border-box;
@@ -12,6 +12,11 @@ body {
     background:  $body-color;
 }
 
+.alerterr{
+    color: $sign-blue; 
+    text-align: center;
+    width: 400px;   
+}
 
 .mainsignupcontainer{
     width: 100%;

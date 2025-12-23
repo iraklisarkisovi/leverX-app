@@ -1,4 +1,4 @@
-@use "./variables.scss" as *;
+@use './variables.scss' as *;
 
 
 * {
@@ -219,8 +219,8 @@ a{
     .mobiledesign {
         display: flex;
         position: fixed;
-        top: 13%;
         left: -100%;
+        top: 0;
         width: 60%;
         height: 100vh;
         background: $burgermenu-bg-color;
@@ -327,10 +327,6 @@ a{
 
 
 @media (max-width: 480px) {    
-    .mobiledesign {
-        top: 12%;
-    }
-
     .mainheader {
         height: auto;
         padding: 15px 10px;
