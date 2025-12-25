@@ -9,7 +9,6 @@ import { useGetUsersQuery } from "../redux/store/api";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store/store";
 import { GetUserState } from "../redux/userslice";
-import { CircularProgress } from "@mui/material";
 import Progress from "../UI components/circularprogress";
 
 const User = () => {

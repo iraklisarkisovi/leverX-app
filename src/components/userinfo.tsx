@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import remoteicon from "../assets/remoteicon.png";
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,15 +7,19 @@ import { GetUserState, HandleEdit } from '../redux/userslice';
 
 const currentuserid =
   localStorage.getItem("userId") || sessionStorage.getItem("userId");
-const currentuserrole =
-  localStorage.getItem("userRole") || sessionStorage.getItem("userRole");
 
 const Userinfo: React.FC = () => {
     const {userData, updatedUserData} = useSelector(
     (state: RootState) => state.UserSlice
   );
+  const [role, setRole] = useState<string | null>('')
   const dispatch = useDispatch()
-   
+  
+  useEffect(() => {
+    const currentuserrole =
+      localStorage.getItem("userRole") || sessionStorage.getItem("userRole");
+    setRole(currentuserrole)
+  }, [])
   useEffect(() => {
     if (updatedUserData && updatedUserData._id === userData._id) {
       dispatch(GetUserState(updatedUserData));
@@ -96,8 +100,7 @@ const Userinfo: React.FC = () => {
             </h4>
             <button className="sectioncontentCopyLinkButton">Copy link</button>
 
-            {(manager && currentuserid === manager.id) ||
-            currentuserrole === "admin" ? (
+            {(manager && currentuserid === manager.id) || role === "admin" ? (
               <button
                 className="sectioncontentEditButton"
                 onClick={() => dispatch(HandleEdit())}
